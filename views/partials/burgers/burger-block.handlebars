@@ -1,0 +1,23 @@
+<li>
+	{{name}}
+
+	<!--<button class="change-devoured btn btn-primary" data-id="{{id}}" data-newdevoured="{{devoured}}">
+		<i class="fas fa-utensils"> </i>{{#if devoured}}&nbspEAT IT!{{else}}&nbspUN-EAT!{{/if}}
+	</button>-->
+
+	<button class="change-devoured btn btn-primary" data-id="{{id}}" data-newdevoured="{{devoured}}">
+		{{#if devoured}}<i class="fas fa-utensils"> </i>&nbspEAT IT!{{else}}<i class="far fa-thumbs-down"> </i>&nbspUN-EAT!{{/if}}
+	</button>
+
+	<button class="delete btn btn-danger" data-id="{{id}}">
+		<i class="fas fa-poo"> </i>&nbspDELETE	
+	</button>
+
+	<button class="update1 btn btn-success" data-id="{{id}}">
+		<i class="fas fa-wrench"> </i>&nbspUPDATE NAME
+	</button>		
+	<form style="display: none" data-id="{{id}}">
+	<input data-id="{{id}}"><a class="update2 btn btn-default" data-id="{{id}}">Submit</a>
+	</form>
+	
+</li>
