@@ -59,8 +59,9 @@ $(function() {
     );
   });
 
-  $(".update1").on("click", function(event) {
+  /*$(".update1").on("click", function(event) {
     event.preventDefault();
+    event.stopPropagation();
     var id = $(this).data("id");
     /*if ($('form[data-id='+id+']').attr('display: none')) {
     $('form[data-id='+id+']').show();
@@ -69,27 +70,51 @@ $(function() {
       $('form[data-id='+id+']').hide();
 
     }*/
-    $('form[data-id='+id+']').toggle();
+   /* $('form[data-id='+id+']').toggle();
+  });*/
+
+  $(".update1").on("click", function(event) {
+    event.preventDefault();    
+    var id = $(this).data("id");
+    if (event.originalEvent.detail != 0) {
+      
+      $('form[data-id='+id+']').toggle();
+      $(this).blur();  
+    }
   });
 
   $(".update2").on("click", function(event) {
     event.preventDefault();
-    var id = $(this).data("id");
-    var update = $('input[data-id='+id+']').val().trim();
-    
+    var id = $(this).data("id");    
+    var update = $('input[data-id='+id+']').val().trim();    
     var newName = {
       name: update
     }
 
-    $.ajax("/api/burgers/" + id, {
+    $.ajax("/api/" + id, {
       type: "PUT",
       data: newName
     }).then(
       function() {
-        console.log("changed name to", update);
-        // Reload the page to get the updated list
+        console.log("changed name to", update);        
         location.reload();
       }
     );
   });
+  /*document.body.addEventListener(
+    "click", 
+    function (ev) { ev.stopPropagation(); ev.preventDefault(); alert('hi') },
+    true);*/
+ /* var x = document.getElementsByClassName('input');  
+  x.addEventListener(
+    "click", 
+    function (ev) { ev.stopPropagation(); ev.preventDefault(); alert("hi")},
+    true
+  );*/
+  $('.form').on('click', function(ev) {
+    ev.stopPropagation(); 
+    ev.preventDefault();
+    $('.update1').blur();
+   // alert('helo');
+  }) 
 });

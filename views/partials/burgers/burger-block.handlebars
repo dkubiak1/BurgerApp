@@ -13,11 +13,11 @@
 		<i class="fas fa-poo"> </i>&nbspDELETE	
 	</button>
 
-	<button class="update1 btn btn-success" data-id="{{id}}">
+	<button class="update1 btn btn-success" style="z-index:-1" data-id="{{id}}">
 		<i class="fas fa-wrench"> </i>&nbspUPDATE NAME
-	</button>		
-	<form style="display: none" data-id="{{id}}">
+	<!--</button>-->		<!--btn-outline-dark-->
+	<form class="form" style="display: none; z-index:1" data-id="{{id}}">
 	<input data-id="{{id}}"><a class="update2 btn btn-default" data-id="{{id}}">Submit</a>
 	</form>
-	
+	</button>
 </li>
